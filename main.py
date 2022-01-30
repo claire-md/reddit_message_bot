@@ -16,7 +16,7 @@ reddit = praw.Reddit(
     client_secret = CLIENT_SECRET, 
     username = USERNAME,
     password = PASSWORD,
-    user_agent = "testv1 by /u/Ok-Confection3035"
+    user_agent = ""
 )
 
 inbox = reddit.inbox.stream()
