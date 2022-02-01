@@ -1,15 +1,14 @@
 import praw
+import os
 from praw.models import Message
+from dotenv import load_dotenv
 
-# FILE_NAME contains the path to a .txt with credential information
-file = open(FILE_NAME, "r")
-lines = file.readlines()
-
-# Information must be in the same order in the .txt
-CLIENT_ID = lines[0].strip()
-CLIENT_SECRET = lines[1].strip()
-USERNAME = lines[2].strip()
-PASSWORD = lines[3].strip()
+# Using an .env file to store credientials
+load_dotenv()
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+USERNAME = os.getenv("USERNAME")
+PASSWORD = os.getenv("PASSWORD")
 
 reddit = praw.Reddit(
     client_id = CLIENT_ID,
@@ -26,5 +25,3 @@ for message in inbox:
     if not message.was_comment and isinstance(message, Message):
         print(f"From {message.author}: {message.body}")
         message.reply("This is coming from an API.")
-
-file.close()
