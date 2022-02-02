@@ -1,2 +1,2 @@
 # reddit_message_bot
-Uses PRAW to send messages on Reddit.
+Using the Reddit API to send messages.
